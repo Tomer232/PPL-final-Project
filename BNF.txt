@@ -1,57 +1,35 @@
 <program> ::= <statements> "EOF"
 
-<statements> ::= <statement> <statements>
-              | ""
+<statements> ::= <statement> <statements> | ""
 
-<statement> ::= <function_def>
-              | <if_statement>
-              | <expression>
+<statement> ::= <function_def> | <if_statement> | <expression>
 
 <function_def> ::= "Defunc" "{" "name" ":" <identifier> "," "arguments" ":" <parameters> "}" <expression>
 
-<parameters> ::= "(" <parameter_list> ")"
+<parameters> ::= "(" <identifier_list> ")"
 
-<parameter_list> ::= <identifier> "," <parameter_list>
-                  | ""
+<identifier_list> ::= <identifier> ("," <identifier>)* | ""
 
 <if_statement> ::= "if" "(" <expression> ")" "{" <expression> "}" "else" "{" <expression> "}"
 
-<expression> ::= <unary_expression>
-               | <binary_expression>
-               | <literal>
-               | <identifier>
-               | <function_call>
-               | <lambda_expression>
-               | "(" <expression> ")"
+<expression> ::= <unary_expression> | <binary_expression> | <literal> | <identifier> | <function_call> | <lambda_expression> | "(" <expression> ")"
 
 <unary_expression> ::= "!" <expression>
 
 <binary_expression> ::= <expression> <operator> <expression>
 
-<operator> ::= "+" | "-" | "*" | "/" | "%"
-             | "&&" | "||"
-             | "==" | "!=" | ">=" | "<=" | ">" | "<"
+<operator> ::= "+" | "-" | "*" | "/" | "%" | "&&" | "||" | "==" | "!=" | ">=" | "<=" | ">" | "<"
 
 <lambda_expression> ::= "(" "Lambd" <identifier> "." <expression> ")"
 
-<function_call> ::= <identifier> "(" <arguments> ")"
-                 | <lambda_expression> "(" <arguments> ")"
+<function_call> ::= <identifier> "(" <arguments> ")" | <lambda_expression> "(" <arguments> ")"
 
-<arguments> ::= <expression> <argument_tail>
-             | ""
+<arguments> ::= <expression> ("," <expression>)* | ""
 
-<argument_tail> ::= "," <expression> <argument_tail>
-                 | ""
+<literal> ::= <integer> | <boolean>
 
-<literal> ::= <integer>
-            | <boolean>
-
-<identifier> ::= <LETTER>
-
-<LETTER> ::= [a-zA-Z_][a-zA-Z_0-9]*
+<identifier> ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 <integer> ::= [-]?[0-9]+
 
 <boolean> ::= "True" | "False"
-
-<EOF> ::= "EOF"
