@@ -7,7 +7,7 @@
               | <if_statement>
               | <expression>
 
-<function_def> ::= "func" "{" "name" ":" <identifier> "," "arguments" ":" <parameters> "}" <expression>
+<function_def> ::= "Defunc" "{" "name" ":" <identifier> "," "arguments" ":" <parameters> "}" <expression>
 
 <parameters> ::= "(" <parameter_list> ")"
 
@@ -32,7 +32,7 @@
              | "&&" | "||"
              | "==" | "!=" | ">=" | "<=" | ">" | "<"
 
-<lambda_expression> ::= "(" "Lambady" <identifier> "." <expression> ")"
+<lambda_expression> ::= "(" "Lambd" <identifier> "." <expression> ")"
 
 <function_call> ::= <identifier> "(" <arguments> ")"
                  | <lambda_expression> "(" <arguments> ")"
